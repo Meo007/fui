@@ -1,0 +1,179 @@
+/* Estilos gerais */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+}
+
+/* Estilos para o container do perfil */
+.profile-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Estilos para o ícone de edição */
+#profile-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.profile-photo:hover #profile-hover {
+    opacity: 1;
+}
+
+#profile-hover img {
+    width: 30px;
+    height: 30px;
+    filter: brightness(0) invert(1);
+}
+
+
+/* Estilos para a foto de capa */
+.cover-photo {
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cover-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cover-photo button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Estilos para a foto de perfil */
+.profile-photo {
+    margin-top: -75px;
+    margin-left: 20px;
+    border: 5px solid #fff;
+    border-radius: 50%;
+    overflow: hidden;
+    cursor: pointer;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    z-index: 1;
+}
+
+.profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos para o ícone de edição */
+.edit-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.edit-button svg {
+    fill: #333; /* Cor do ícone de editar */
+    width: 24px;
+    height: 24px;
+}
+
+/* Estilos para alinhar elementos na mesma linha */
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+}
+
+.profile-info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.profile-info h1 {
+    margin: 0;
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.profile-info p {
+    color: #666;
+    margin: 5px 0 0;
+}
+
+#bio-container {
+    margin-top: 20px;
+}
+
+#bio-text {
+    margin: 0;
+}
+
+#bio-text button {
+    background: none;
+    border: none;
+    color: blue;
+    cursor: pointer;
+}
+
+#bio-edit {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+}
+
+#save-bio {
+    margin-top: 10px;
+}
+
+/* Estilos para o modal de confirmação */
+#confirmation-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 1000;
+}
+
+#confirmation-modal p {
+    margin: 0 0 20px;
+}
+
+#confirmation-modal button {
+    padding: 10px 20px;
+    margin: 0 10px;
+    cursor: pointer;
+}

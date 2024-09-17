@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moldura de Imagens</title>
+</head>
+<style>
+/* Estiliza o corpo da página */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    margin: 0;
+}
+
+/* Moldura que contém as imagens */
+.moldura {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Cria uma grade com 2 colunas */
+    gap: 10px; /* Espaçamento entre as imagens */
+    padding: 20px; /* Espaçamento interno da moldura */
+    border: 5px solid #333; /* Borda da moldura */
+    background-color: #fff; /* Fundo da moldura */
+}
+
+/* Estilos individuais para cada imagem dentro da moldura */
+.imagem {
+    border: 2px solid #333; /* Borda ao redor de cada imagem */
+    padding: 10px; /* Espaçamento interno ao redor da imagem */
+    background-color: #fff; /* Fundo ao redor da imagem */
+    overflow: hidden; /* Garante que a imagem não transborde do seu container */
+    transition: transform 0.3s ease; /* Animação suave ao passar o mouse */
+}
+
+/* Estilos para a própria imagem */
+.imagem img {
+    display: block;
+    width: 100%; /* Garante que a imagem preencha todo o espaço disponível */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+/* Efeito de hover: a imagem sobe um pouco */
+.imagem:hover {
+    transform: translateY(-10px); /* Move a imagem para cima em 10px */
+}
+
+
+</style>
+<body>
+    <div class="moldura">
+        <div class="imagem">
+            <img src="../img/teste/capa.jpg" alt="Imagem 1">
+        </div>
+        <div class="imagem">
+            <img src="../img/teste/perfil.jpg" alt="Imagem 2">
+        </div>
+        <div class="imagem">
+            <img src="../img/teste/capa.jpg" alt="Imagem 3">
+        </div>
+        <div class="imagem">
+            <img src="../img/teste/perfil.jpg" alt="Imagem 4">
+        </div>
+    </div>
+</body>
+</html>
+

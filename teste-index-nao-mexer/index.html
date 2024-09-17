@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendação</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+    <style>
+        body {
+        font-family: Arial, sans-serif;
+        background-color: #121212;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        }
+
+        .album-section {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .album-section h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .album-carousel {
+            display: flex;
+            justify-content: space-around;
+            overflow-x: auto;
+            padding: 10px 0;
+        }
+
+        .album {
+            flex: 0 0 auto;
+            width: 150px;
+            margin-right: 20px;
+            text-align: center;
+        }
+
+        .album img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .album p {
+            font-size: 14px;
+            margin: 10px 0 5px;
+        }
+
+        .album span {
+            font-size: 12px;
+            color: #b3b3b3;
+        }
+
+        .show-all {
+            display: inline-block;
+            margin-top: 20px;
+            color: #b3b3b3;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .show-all:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .album-carousel {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .album {
+                margin-bottom: 20px;
+                margin-right: 10px;
+            }
+        }
+
+    </style>
+<body>
+    <div class="album-section">
+        <h2>Álbuns populares</h2>
+        <div class="album-carousel">
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="love hotel">
+                <p>love hotel</p>
+                <span>leftovermax</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="HIT ME HARD AND...">
+                <p>HIT ME HARD AND...</p>
+                <span>Billie Eilish</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="White Noise (Sleep...)">
+                <p>White Noise (Sleep...)</p>
+                <span>Sleepy John</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="Escândalo Íntimo">
+                <p>Escândalo Íntimo</p>
+                <span>Luísa Sonza</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="O Céu Explica Tu...">
+                <p>O Céu Explica Tu...</p>
+                <span>Henrique & Juliano</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="Funk Generation">
+                <p>Funk Generation</p>
+                <span>Anitta</span>
+            </div>
+            <div class="album">
+                <img src="img/capa-ana.jpg" alt="Raiz Goiana">
+                <p>Raiz Goiana</p>
+                <span>Lauana Prado</span>
+            </div>
+        </div>
+        <a href="#" class="show-all">Mostrar tudo</a>
+    </div>
+
+    <!--Parte 2-->
+    <div class="album-section">
+        <h2>Álbuns populares</h2>
+        <div class="album-carousel">
+            <div class="album">
+                <img src="album1.jpg" alt="love hotel">
+                <p>love hotel</p>
+                <span>leftovermax</span>
+            </div>
+            <div class="album">
+                <img src="album2.jpg" alt="HIT ME HARD AND...">
+                <p>HIT ME HARD AND...</p>
+                <span>Billie Eilish</span>
+            </div>
+            <div class="album">
+                <img src="album3.jpg" alt="White Noise (Sleep...)">
+                <p>White Noise (Sleep...)</p>
+                <span>Sleepy John</span>
+            </div>
+            <div class="album">
+                <img src="album4.jpg" alt="Escândalo Íntimo">
+                <p>Escândalo Íntimo</p>
+                <span>Luísa Sonza</span>
+            </div>
+            <div class="album">
+                <img src="album5.jpg" alt="O Céu Explica Tu...">
+                <p>O Céu Explica Tu...</p>
+                <span>Henrique & Juliano</span>
+            </div>
+            <div class="album">
+                <img src="album6.jpg" alt="Funk Generation">
+                <p>Funk Generation</p>
+                <span>Anitta</span>
+            </div>
+            <div class="album">
+                <img src="album7.jpg" alt="Raiz Goiana">
+                <p>Raiz Goiana</p>
+                <span>Lauana Prado</span>
+            </div>
+        </div>
+        <a href="#" class="show-all">Mostrar tudo</a>
+    </div>
+</body>
+</html>

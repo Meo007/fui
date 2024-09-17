@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/logo/icon/logobranca.ico" type="image/x-icon">
+</head>
+<body>
+    <!--Início cima-->
+    <!--Isolar toda a parte do "menu"-->
+    <div class="cima">
+        <!--logo com o nome-->
+        <header>
+            <div class="logo-container">
+                <img src="img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                <h1 style="font-family: 'Montserrat', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); margin-bottom: 15px;">Fui! Viagens</h1>
+            </div>
+        <!--Ícone com foto para direcionar a página do perfil de usuário-->
+        <div class="icon-container">
+            <a href="perfil/pagina-perfil.html">
+                <img src="img/icon/icon-perfil.png" alt="Ícone de Perfil">
+            </a>
+        </div>
+        <!--Ícone ao diminuir-->
+        <div class="hamburger-menu" onclick="toggleMenu()">
+            &#9776;
+        </div>
+        </header>
+
+        <!--pesquisa-->
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14c-2.48 0-4.5-2.02-4.5-4.5S7.02 5 9.5 5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/>
+            </svg>
+            <input type="text" placeholder="Pesquisar..." id="searchInput">
+            <div class="suggestions" id="suggestions"></div>
+        </div>
+        
+        <!--opções-->
+        <div class="nav-bar">
+            <a href="index.html" class="active" onclick="funcao1()">Tela Inicial</a>
+            <a href="destino/destino.html" onclick="redirecionar(event, 'Destinos')">Destinos</a>
+            <a href="hospedagens/hospedagens.html" onclick="redirecionar(event, 'Hospedagens')">Hospedagens</a>
+            <a href="sobre-nos/sobre-nos.html" onclick="redirecionar(event, 'Sobre nós')">Sobre nós</a>
+            <a href="contato/contato.html" onclick="redirecionar(event, 'Contato')">Contato</a>
+            <a>    <button onclick="toggleDarkMode()">
+                <svg width="30" height="30" id="light-icon">
+                  <circle cx="15" cy="15" r="6" fill="currentColor" />
+          
+                  <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                  ></line>                          
+                  <use href="#ray" transform="rotate(45 15 15)" />
+                  <use href="#ray" transform="rotate(90 15 15)" />
+                  <use href="#ray" transform="rotate(135 15 15)" />
+                  <use href="#ray" transform="rotate(180 15 15)" />
+                  <use href="#ray" transform="rotate(225 15 15)" />
+                  <use href="#ray" transform="rotate(270 15 15)" />
+                  <use href="#ray" transform="rotate(315 15 15)" />
+                </svg>
+                <svg width="30" height="30" id="dark-icon">
+                  <path
+                    fill="currentColor"
+                    d="
+                    M 23, 5
+                    A 12 12 0 1 0 23, 25
+                    A 12 12 0 0 1 23, 5"
+                  />
+                </svg>
+              </button></a>
+    </div>
+    
+     <!--recados-->
+     <div class="no-results-message" id="noResultsMessage">Não foi possível encontrar resultado para a pesquisa.</div>
+     <div class="transition-message" id="transitionMessage">Você está sendo direcionado para a página...</div>
+    
+</div>
+<!--Fim da parte de cime-->
+
+    <!--Parte imagem + texto...-->
+    <section class="imagem-viagem">
+        <div class="imagem-container">
+            <img src="img/home/img-home.jpg" alt="Imagem de Viagem">
+            <div class="frase-sobreposta">
+                <p>Sua aventura,</p>
+                    <p>nosso destino!</p>
+            </div>
+        </div>
+    </section>
+
+    <h1 id="h1">Explore destinos pelo Brasil!</h1>
+
+    <!-- Seção de páginas mais acessadas -->
+    <section class="opcoes-de-viagens">
+        <div class="album-section">
+            <div class="album-header">
+                <h2 style="position: left;">Páginas mais acessadas em nosso site</h2>
+                <button id="showAllBtn">Mostrar tudo</button>
+            </div>
+            <!-- Mensagem de informações adicionais -->
+            <div id="overlay" class="overlay">
+                <div class="overlay-content">
+                    <span class="close-btn" id="closeBtn">&times;</span>
+                    <h2>Informações Adicionais</h2>
+                    <p>Aqui estão mais informações sobre os álbuns populares...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<br>
+
+    <!-- Slider -->
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide-item" data-title="Título 1" data-description="Descrição detalhada da imagem 1.">
+                <img src="img/teste/capa.jpg" alt="Imagem 1">
+                <h2>Título 1</h2>
+            </div>
+            <div class="slide-item" data-title="Título 2" data-description="Descrição detalhada da imagem 2.">
+                <img src="img/teste/capa.jpg" alt="Imagem 2">
+                <h2>Título 2</h2>
+            </div>
+            <div class="slide-item" data-title="Título 3" data-description="Descrição detalhada da imagem 3.">
+                <img src="img/teste/capa.jpg" alt="Imagem 3">
+                <h2>Título 3</h2>
+            </div>
+            <div class="slide-item" data-title="Título 4" data-description="Descrição detalhada da imagem 4.">
+                <img src="img/teste/capa.jpg" alt="Imagem 4">
+                <h2>Título 4</h2>
+            </div>
+            <div class="slide-item" data-title="Título 5" data-description="Descrição detalhada da imagem 5.">
+                <img src="img/teste/capa.jpg" alt="Imagem 5">
+                <h2>Título 5</h2>
+            </div>
+            <div class="slide-item" data-title="Título 6" data-description="Descrição detalhada da imagem 6.">
+                <img src="img/teste/capa.jpg" alt="Imagem 6">
+                <h2>Título 6</h2>
+            </div>
+        </div>
+        <button class="arrow left-arrow">&lt;</button>
+        <button class="arrow right-arrow">&gt;</button>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Imagem Modal">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div class="login-message">
+                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1C9.79 1 8 2.79 8 5V9H7C6.44772 9 6 9.44772 6 10V18C6 18.5523 6.44772 19 7 19H17C17.5523 19 18 18.5523 18 18V10C18 9.44772 17.5523 9 17 9H16V5C16 2.79 14.21 1 12 1ZM10 5C10 3.9 10.9 3 12 3C13.1 3 14 3.9 14 5V9H10V5ZM8 11H16V18H8V11ZM12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15Z" fill="#000"/>
+                </svg>
+                <span>Se quiser mais informações, <a href="tela-login/login.html">faça login.</a></span>
+            </div>
+        </div>
+    </div>
+
+    </section>
+        <!--Inicio parte de baixo-->
+        <footer>
+            <div class="footer-logo-container">
+                <img src="img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                <h2>Fui! Viagens</h2>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Tela Inicial</a>
+                <a href="destino/destino.html">Destinos</a>
+                <a href="hospedagens/hospedagens.html">Hospedagens</a>
+                <a href="sobre-nos/sobre-nos.html">Sobre nós</a>
+                <a href="contato/contato.html">Contato</a>
+            </div>
+            <div class="footer-rights">
+                <p>&copy; 2024 Fui! Viagens. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+        <!--Fim parte de baixo-->
+
+    <script src="script.js"></script>
+</body>
+</html>

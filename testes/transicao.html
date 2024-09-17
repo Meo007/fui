@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sliding Transition</title>
+    <link rel="stylesheet" href="#">
+</head>
+<style>
+    body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #3498db;
+    color: white;
+}
+
+h2 {
+    font-size: 3em;
+    margin: 0;
+}
+
+.btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    background-color: #2c3e50;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #1abc9c;
+}
+
+.transition-screen {
+    position: fixed;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: left 1s ease-in-out;
+    z-index: 100;
+}
+
+.transition-screen.active {
+    left: 0;
+}
+
+.transition-content img {
+    width: 500px; /* Adjust the size as needed */
+    height: auto;
+}
+
+</style>
+
+<body>
+    <div class="container">
+        <h2>Welcome to the Home Page</h2>
+        <button class="btn" onclick="startTransition()">Go to Next Page</button>
+    </div>
+    <div class="transition-screen" id="transition-screen">
+        <div class="transition-content">
+            <img src="img/plane.png" alt="Transition Image">
+        </div>
+    </div>
+
+    <script>
+       function startTransition() {
+    const transitionScreen = document.getElementById('transition-screen');
+    transitionScreen.classList.add('active');
+    setTimeout(() => {
+        window.location.href = 'next.html'; // Redirect to the next page
+    }, 1000); // Adjust the timeout duration to match the transition duration
+}
+
+    </script>
+</body>
+</html>

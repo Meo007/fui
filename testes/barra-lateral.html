@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agência de Viagens - Fui! Viagens</title>
+  <style>
+    /* Estilos CSS */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .lateral {
+      width: 250px;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+      height: 100vh;
+      position: fixed;
+    }
+
+    .logo-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .logo-container img {
+      width: 100px;
+      height: auto;
+    }
+
+    .logo-container h1 {
+      font-size: 1.5rem;
+      margin: 10px 0;
+    }
+
+    .icon-container {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .icon-container img {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+    }
+
+    .hamburger-menu {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      text-align: right;
+    }
+
+    .search-bar {
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar svg {
+      fill: #fff;
+      margin: 0 10px;
+    }
+
+    .search-bar input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      border-radius: 20px;
+      font-size: 1rem;
+    }
+
+    .nav-bar a {
+      display: block;
+      padding: 10px 0;
+      color: #fff;
+      text-decoration: none;
+      text-align: center;
+      transition: background-color 0.3s ease;
+    }
+
+    .nav-bar a:hover {
+      background-color: #555;
+    }
+
+    /* Responsividade */
+    @media screen and (max-width: 768px) {
+      .lateral {
+        width: 100%;
+        height: auto;
+        position: relative;
+      }
+
+      .hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+
+      .nav-bar {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+      }
+
+      .nav-bar.active {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Parte lateral -->
+  <div class="lateral">
+    <!-- Logo e nome da agência -->
+    <div class="logo-container">
+      <img src="../img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+      <h1>Fui! Viagens</h1>
+    </div>
+    <!-- Ícone para o perfil do usuário -->
+    <div class="icon-container">
+      <a href="pagina-perfil.html">
+        <img src="img/icon/icon-perfil.png" alt="Ícone de Perfil">
+      </a>
+    </div>
+    <!-- Ícone do menu hamburguer -->
+    <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
+    <!-- Barra de pesquisa -->
+    <div class="search-bar">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+        <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14c-2.48 0-4.5-2.02-4.5-4.5S7.02 5 9.5 5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/>
+      </svg>
+      <input type="text" placeholder="Pesquisar..." id="searchInput">
+      <div class="suggestions" id="suggestions"></div>
+    </div>
+    <!-- Menu de navegação -->
+    <div class="nav-bar" id="navbar">
+      <a href="../index.html" onclick="redirecionar(event, 'Tela Inicial')">Tela Inicial</a>
+      <a href="destino/destino.html" class="active" onclick="funcao1()">Destinos</a>
+      <a href="#" onclick="redirecionar(event, 'Hospedagens')">Hospedagens</a>
+      <a href="#" onclick="redirecionar(event, 'Sobre nós')">Sobre nós</a>
+      <a href="#" onclick="redirecionar(event, 'Contato')">Contato</a>
+    </div>
+  </div>
+
+  <!-- JavaScript para funcionalidades -->
+  <script>
+    // Função para alternar o menu hamburguer
+    function toggleMenu() {
+      const navbar = document.getElementById('navbar');
+      navbar.classList.toggle('active');
+    }
+
+    // Função para redirecionar
+    function redirecionar(event, destino) {
+      event.preventDefault();
+      console.log(`Redirecionando para ${destino}`);
+      // Implementar lógica de redirecionamento aqui
+    }
+
+    // Simulação de uma função qualquer
+    function funcao1() {
+      console.log('Função 1 executada');
+    }
+  </script>
+</body>
+</html>

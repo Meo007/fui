@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Navegação com Redirecionamento e Mensagem</title>
+<style>
+    /* Estilo para link ativo */
+    .active {
+        font-weight: bold;
+        color: #333; /* Cor do link ativo */
+    }
+</style>
+</head>
+<body>
+
+<!-- Barra de navegação -->
+<nav>
+    <a href="index.html" class="active" onclick="redirecionar(event, 'Tela Inicial')">Tela Inicial</a>
+    <a href="destino/destino.html" onclick="redirecionar(event, 'Destinos')">Destinos</a>
+    <a href="#" onclick="redirecionar(event, 'Hospedagens')">Hospedagens</a>
+    <a href="#" onclick="redirecionar(event, 'Sobre nós')">Sobre nós</a>
+    <a href="#" onclick="redirecionar(event, 'Contato')">Contato</a>
+</nav>
+
+<script>
+    function redirecionar(event, pagina) {
+        // Previne o comportamento padrão do link (não redirecionar imediatamente)
+        event.preventDefault();
+
+        // Mostra a mensagem de redirecionamento
+        alert("Você está sendo redirecionado para " + pagina);
+
+        // Redireciona para a página após mostrar a mensagem
+        setTimeout(function() {
+            window.location.href = event.target.getAttribute("href");
+        }, 1000); // Delay de 1 segundo (1000 milissegundos)
+    }
+</script>
+
+</body>
+</html>

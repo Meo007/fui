@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider with Modal</title>
+    <style>
+        .slider-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide-item {
+            flex: 0 0 auto;
+            width: calc(100% / 3 - 20px); /* Ajusta o número de slides visíveis */
+            margin-right: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .slide-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .slide-item h2 {
+            margin-top: 10px;
+            font-size: 18px;
+            color: #333;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            z-index: 2;
+            transition: background-color 0.3s ease;
+        }
+
+        .arrow:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .left-arrow {
+            left: 10px;
+        }
+
+        .right-arrow {
+            right: 10px;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 10% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 500px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .modal-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .modal-content p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .login-message {
+            font-size: 16px;
+            color: #333;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-message svg {
+            margin-right: 5px;
+        }
+
+        .login-message a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .login-message a:hover {
+            text-decoration: underline;
+        }
+
+        /* Close Button */
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            color: #aaa;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #000;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slider">
+            <div class="slide-item" data-title="Título 1" data-description="Descrição detalhada da imagem 1.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 1">
+                <h2>Título 1</h2>
+            </div>
+            <div class="slide-item" data-title="Título 2" data-description="Descrição detalhada da imagem 2.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 2">
+                <h2>Título 2</h2>
+            </div>
+            <div class="slide-item" data-title="Título 3" data-description="Descrição detalhada da imagem 3.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 3">
+                <h2>Título 3</h2>
+            </div>
+            <div class="slide-item" data-title="Título 4" data-description="Descrição detalhada da imagem 4.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 4">
+                <h2>Título 4</h2>
+            </div>
+            <div class="slide-item" data-title="Título 5" data-description="Descrição detalhada da imagem 5.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 5">
+                <h2>Título 5</h2>
+            </div>
+            <div class="slide-item" data-title="Título 6" data-description="Descrição detalhada da imagem 6.">
+                <img src="../img/teste/capa.jpg" alt="Imagem 6">
+                <h2>Título 6</h2>
+            </div>
+        </div>
+        <button class="arrow left-arrow">&lt;</button>
+        <button class="arrow right-arrow">&gt;</button>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modalImage" src="" alt="Imagem Modal">
+            <h2 id="modalTitle"></h2>
+            <p id="modalDescription"></p>
+            <div class="login-message">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock-fill" viewBox="0 0 16 16">
+                    <path d="M8 1a4 4 0 0 0-4 4v3H2.5A1.5 1.5 0 0 0 1 9.5v5A1.5 1.5 0 0 0 2.5 16h11A1.5 1.5 0 0 0 15 14.5v-5a1.5 1.5 0 0 0-1.5-1.5H12V5a4 4 0 0 0-4-4zm3 7V5a3 3 0 0 0-6 0v3h6z"/>
+                </svg>
+                <span>Se quiser mais informações, <a href="#">faça login</a></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slider = document.querySelector('.slider');
+        const leftArrow = document.querySelector('.left-arrow');
+        const rightArrow = document.querySelector('.right-arrow');
+        const slideItems = document.querySelectorAll('.slide-item');
+        let currentIndex = 0;
+
+        function updateSlider() {
+            const slideItemWidth = slideItems[0].offsetWidth + parseInt(getComputedStyle(slideItems[0]).marginRight);
+            const containerWidth = document.querySelector('.slider-container').offsetWidth;
+            const maxScroll = slideItemWidth * slideItems.length - containerWidth;
+
+            if (currentIndex < 0) currentIndex = 0;
+            if (currentIndex > slideItems.length - 1) currentIndex = slideItems.length - 1;
+
+            slider.style.transform = `translateX(-${currentIndex * (slideItemWidth)}px)`;
+        }
+
+        rightArrow.addEventListener('click', () => {
+            const slideItemWidth = slideItems[0].offsetWidth + parseInt(getComputedStyle(slideItems[0]).marginRight);
+            const containerWidth = document.querySelector('.slider-container').offsetWidth;
+            const maxScroll = slideItemWidth * slideItems.length - containerWidth;
+
+            if ((currentIndex + 1) * slideItemWidth < maxScroll + containerWidth) {
+                currentIndex++;
+                updateSlider();
+            }
+        });
+
+        leftArrow.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlider();
+            }
+        });
+
+        window.addEventListener('resize', updateSlider);
+
+        // Modal Functionality
+        const modal = document.getElementById("infoModal");
+        const modalImage = document.getElementById("modalImage");
+        const modalTitle = document.getElementById("modalTitle");
+        const modalDescription = document.getElementById("modalDescription");
+        const closeBtn = document.querySelector(".close");
+
+        slideItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const title = item.getAttribute('data-title');
+                const description = item.getAttribute('data-description');
+                const imgSrc = item.querySelector('img').src;
+
+                modalImage.src = imgSrc;
+                modalTitle.textContent = title;
+                modalDescription.textContent = description;
+
+                modal.style.display = "block";
+            });
+        });
+
+        closeBtn.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

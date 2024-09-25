@@ -1,266 +1,278 @@
-/*Design base início*/
-body {
-  font-family: Arial, sans-serif;
-  font-weight: bold;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%; /* Garante que o corpo ocupe 100% da largura */
-}
+        /*Design base início*/
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Garante que o corpo ocupe 100% da largura */
+        }
 
-header {
-  width: 100%; /* Garante que o cabeçalho ocupe 100% da largura */
-  color: #ffffff;
-  text-align: center; /* Centraliza o texto */
-  padding: 10px 20px; /* Reduz o padding para melhor visualização em telas menores */
-  display: flex;
-  align-items: center;
-  justify-content: space-between; /* Distribui espaço entre os itens */
-  box-sizing: border-box; /* Inclui padding na largura total */
-}
+        header {
+            width: 100%; /* Garante que o cabeçalho ocupe 100% da largura */
+            color: #ffffff;
+            text-align: center; /* Centraliza o texto */
+            padding: 10px 20px; /* Reduz o padding para melhor visualização em telas menores */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribui espaço entre os itens */
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
 
-.logo-container {
-  display: flex;
-  align-items: center;
-  justify-content: center; /* Centraliza a logo */
-  flex: 1;
-}
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centraliza a logo */
+            flex: 1;
+        }
 
-.logo-container img {
-  max-height: 40px;
-  margin-right: 10px;
-}
+        .logo-container img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
 
-.icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end; /* Alinha o ícone à direita */
-  flex: 0; /* Ajusta o ícone para ocupar o espaço necessário */
-}
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Alinha o ícone à direita */
+            flex: 0; /* Ajusta o ícone para ocupar o espaço necessário */
+        }
 
-.icon-container img {
-  width: 45px;
-  height: 45px;
-}
-.search-bar {
-  width: 70%;
-  padding: 5px 10px;
-  display: flex;
-  align-items: center;
-  background-color: #fff;
-  color: #000;
-  border-radius: 20px;
-  margin: 10px 0; /* Reduz a margem para melhor visualização em telas menores */
-  position: relative;
-  box-sizing: border-box; /* Inclui padding na largura total */
-}
+        .icon-container img {
+            width: 45px;
+            height: 45px;
+        }
 
-.search-bar input {
-  width: 100%;
-  background: none;
-  border: none;
-  color: #000;
-  padding: 5px;
-  outline: none;
-  font-size: 16px;
-}
-/*Escrita do pesquisar*/
-.search-bar input::placeholder {
-  color: #0303b5;
-}
-/*ícone de pesquisa*/
-.search-bar svg {
-  fill: #0303b5;
-  margin-right: 10px;
-}
-/*sugestões*/
-.suggestions {
-  width: 100%; /* Garante que as sugestões ocupem 100% da largura */
-  background-color: #fff;
-  color: #0303b5;
-  border-radius: 0 0 10px 10px;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  display: none;
-  flex-direction: column;
-  max-height: 200px;
-  overflow-y: auto;
-  z-index: 1;
-  box-sizing: border-box; /* Inclui padding na largura total */
-}
-/*texto de sugestões*/
-.suggestions p {
-  padding: 10px;
-  margin: 0;
-  border-bottom: 1px solid #444;
-  cursor: pointer;
-}
+        .search-bar {
+            width: 70%;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            margin: 10px 0; /* Reduz a margem para melhor visualização em telas menores */
+            position: relative;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
 
-.suggestions p:last-child {
-  border-bottom: none;
-}
+        .search-bar input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #000;
+            padding: 5px;
+            outline: none;
+            font-size: 16px;
+        }
 
-.suggestions p:hover {
-  background-color: #0303b5;
-  color: #fff;
-}
-/* Barra de navegação */
-.nav-bar {
-  width: 100%; /* Garante que a barra de navegação ocupe 100% da largura */
-  padding: 10px 20px;
-  display: flex;
-  justify-content: center;
-  box-sizing: border-box; /* Inclui padding na largura total */
-  z-index: 1000; /* Z-index alto para garantir que fique acima de outros elementos */
-  transition: top 0.3s ease; /* Transição suave para a mudança de posição */
-}
-.nav-bar.fixed {
-  background-color: #000050;
-  position: fixed;
-  top: 0;
-  z-index: 1000; /* Certifique-se de que a nav-bar fique acima de outros elementos */
-}
+        /*Escrita do pesquisar*/
+        .search-bar input::placeholder {
+            color: #0303b5;
+        }
 
-/* Adiciona espaço ao conteúdo quando a nav-bar está fixa */
-body.nav-fixed {
-    padding-top: 60px;
-}
-  
-/* Links da barra de navegação */
-.nav-bar a {
-  color: #fff;
-  text-decoration: none;
-  margin: 0 10px; /* Reduz a margem para melhor visualização em telas menores */
-  font-size: 16px;
-  position: relative;
-  padding: 5px;
-  transition: background-color 0.3s ease;
-}
+        /*ícone de pesquisa*/
+        .search-bar svg {
+            fill: #0303b5;
+            margin-right: 10px;
+        }
 
-/* Efeito ativo */
-.nav-bar a.active {
-  color: #fff;
-}
+        /*sugestões*/
+        .suggestions {
+            width: 100%; /* Garante que as sugestões ocupem 100% da largura */
+            background-color: #fff;
+            color: #0303b5;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
 
-/* Efeito para ativar */
-.nav-bar a.active::after {
-  content: '';
-  display: block;
-  margin: 0 auto;
-  width: 50%;
-  padding-top: 5px;
-  border-bottom: 2px solid #fff;
-}
+        /*texto de sugestões*/
+        .suggestions p {
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+        }
 
-/* Efeito de hover */
-.nav-bar a:hover {
-  color: #fefefe;
-  background-color: #38B6FF; /* Cor do fundo ao final do efeito */
-  border-radius: 5px;
-}
+        .suggestions p:last-child {
+            border-bottom: none;
+        }
 
-/*Ícone*/
-.hamburger-menu {
-  display: none;
-  font-size: 30px;
-  cursor: pointer;
-}
+        .suggestions p:hover {
+            background-color: #0303b5;
+            color: #fff;
+        }
 
-/*Responsividade*/  
-@media (max-width: 768px) {
-  .nav-bar {
-      display: none;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      background-color: #0303b5;
-  }
+        /* Barra de navegação */
+        .nav-bar {
+            width: 100%; /* Garante que a barra de navegação ocupe 100% da largura */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box; /* Inclui padding na largura total */
+            z-index: 1000; /* Z-index alto para garantir que fique acima de outros elementos */
+            transition: top 0.3s ease; /* Transição suave para a mudança de posição */
+        }
 
-  .nav-bar a {
-      margin: 10px 0;
-      font-size: 18px;
-  }
+        .nav-bar.fixed {
+            background-color: #000050;
+            position: fixed;
+            top: 0;
+            z-index: 1000; /* Certifique-se de que a nav-bar fique acima de outros elementos */
+        }
 
-  .hamburger-menu {
-      display: block;
-  }
+        /* Adiciona espaço ao conteúdo quando a nav-bar está fixa */
+        body.nav-fixed {
+            padding-top: 60px;
+        }
 
-  .nav-bar.active {
-      display: flex;
-  }
-}
+        /* Links da barra de navegação */
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px; /* Reduz a margem para melhor visualização em telas menores */
+            font-size: 16px;
+            position: relative;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
 
-/*Aviso de redirecionamento de página*/
-.active{
-  font-weight: bold;
-  color: #333; /*Cor do link ativo*/
-}
+        /* Efeito ativo */
+        .nav-bar a.active {
+            color: #fff;
+        }
 
-        /*Aviso deredirecionamento da página*/
+        /* Efeito para ativar */
+        .nav-bar a.active::after {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            padding-top: 5px;
+            border-bottom: 2px solid #fff;
+        }
+
+        /* Efeito de hover */
+        .nav-bar a:hover {
+            color: #fefefe;
+            background-color: #38B6FF; /* Cor do fundo ao final do efeito */
+            border-radius: 5px;
+        }
+
+        /*Ícone*/
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff; /* Cor do ícone do menu hamburguer */
+        }
+
+        /*Responsividade*/  
+        @media (max-width: 768px) {
+            .nav-bar {
+                display: none; /* Oculta a nav-bar por padrão em telas pequenas */
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #0303b5;
+                position: absolute; /* Torna a nav-bar absoluta */
+                top: 60px; /* Posiciona abaixo do cabeçalho */
+                left: 0;
+            }
+
+            .nav-bar a {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+            .hamburger-menu {
+                display: block; /* Exibe o menu hamburguer em telas pequenas */
+            }
+
+            .nav-bar.active {
+                display: flex; /* Exibe a nav-bar quando ativa */
+            }
+        }
+
+        /*Aviso de redirecionamento de página*/
+        .active {
+            font-weight: bold;
+            color: #333; /*Cor do link ativo*/
+        }
+
+        /*Aviso de redirecionamento da página*/
         .transition-message {
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          background-color: rgba(0, 0, 0, 0.8);
-          color: #fff;
-          padding: 20px;
-          border-radius: 10px;
-          display: none;
-          z-index: 1000;
-          text-align: center;
-      }
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            text-align: center;
+        }
 
-      .no-results-message {
-          width: 100%; /* Garante que a mensagem ocupe 100% da largura */
-          background-color: #0303b5;
-          color: #fff;
-          text-align: center;
-          padding: 10px;
-          border-radius: 10px;
-          display: none;
-          margin-top: 10px;
-          box-sizing: border-box; /* Inclui padding na largura total */
-      }
-/*fundo da parte de cima do site*/
-.cima {
-  width: 100%; /* Garante que a div cima ocupe 100% da largura */
-  background-color: #000050;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box; /* Inclui padding na largura total */
-}
+        .no-results-message {
+            width: 100%; /* Garante que a mensagem ocupe 100% da largura */
+            background-color: #0303b5;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            margin-top: 10px;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
 
-/* Estilos para o modo noturno */
-body.dark-mode {
-  background-color: #000; /* Fundo escuro para o modo noturno */
-}
+        /*fundo da parte de cima do site*/
+        .cima {
+            width: 100%; /* Garante que a div cima ocupe 100% da largura */
+            background-color: #000050;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
 
-.overlay.dark-mode {
-  background-color: rgba(0, 0, 0, 0.7); /* Fundo translúcido para modo noturno */
-}
+        /* Estilos para o modo noturno */
+        body.dark-mode {
+            background-color: #000; /* Fundo escuro para o modo noturno */
+        }
 
-.overlay-content.dark-mode {
-  background-color: #666; /* Fundo mais escuro para conteúdo no modo noturno */
-  color: #fff; /* Cor do texto para modo noturno */
-}
+        .overlay.dark-mode {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo translúcido para modo noturno */
+        }
 
-.close-btn.dark-mode {
-  color: #fff; /* Cor do ícone de fechar para modo noturno */
-}
+        .overlay-content.dark-mode {
+            background-color: #666; /* Fundo mais escuro para conteúdo no modo noturno */
+            color: #fff; /* Cor do texto para modo noturno */
+        }
 
-/* Estilos do rodapé */
-/* Estilos do rodapé */
+        .close-btn.dark-mode {
+            color: #fff; /* Cor do ícone de fechar para modo noturno */
+        }
+
+        /* Estilos do rodapé */
 footer {
   width: 94%;
   background-color: #000050;
-  color: #fff;
+  color: white; /* Define a cor do link como branca */
+  text-decoration: none; /* Remove o sublinhado*/
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -280,39 +292,50 @@ footer {
   margin-bottom: 10px;
 }
 
-.footer-links {
+.footer-logo-container h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.footer-nav {
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+  margin-bottom: 10px;
 }
 
-.footer-links a {
-  color: #fff;
+.footer-nav a {
+  color: #fff; /* Mantém a cor dos links como branca */
   text-decoration: none;
   margin: 0 10px;
-  font-size: 16px;
 }
 
-.footer-links a:hover {
-  color: #f00;
+.footer-nav a:hover {
+  color: #f0f0f0; /* Muda a cor ao passar o mouse */
 }
 
-.footer-rights {
+.footer-text {
   font-size: 14px;
 }
 
-@media (max-width: 1040px) {
-  .footer-links {
-    flex-direction: column;
-  }
+        /* Estilo do botão de voltar ao topo */
+        .back-to-top {
+            display: none; /* Oculta por padrão */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000050;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1000; /* Coloca o botão acima de outros elementos */
+        }
 
-  .footer-links a {
-    margin: 5px 0;
-  }
-}
-
-/*Design base fim*/
+        .back-to-top:hover {
+            background-color: #333; /* Muda a cor ao passar o mouse */
+        }
+        /*Design base fim*/
 
 /*imagens*/
 .imagem-viagem {
@@ -454,7 +477,7 @@ body.dark-mode .album-section {
 
 .album-header h2 {
   margin: 0; /* Remove a margem padrão */
-  font-size: 24px; /* Tamanho da fonte */
+  font-size: 20px; /* Tamanho da fonte */
   color: #333; /* Cor do texto */
 }
 
@@ -473,40 +496,31 @@ body.dark-mode .album-header h2 {
   transition: background-color 0.3s ease; /* Transição suave */
 }
 
-
 /* Modo noturno */
 body.dark-mode .album-header button {
-  color: #FFF ; /* Cor do botão em modo noturno */
-}
-
-/* Cabeçalho do álbum */
-.album-header {
-  display: flex;
-  justify-content: space-between; /* Distribui o título e o botão nas extremidades */
-  align-items: center; /* Alinha verticalmente */
-  margin-bottom: 20px; /* Espaço abaixo do cabeçalho */
-}
-
-.album-header h2 {
-  margin: 0; /* Remove a margem padrão */
-  font-size: 24px; /* Tamanho da fonte */
-  color: #333; /* Cor do texto */
-}
-
-.album-header button {
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  background-color: none;
-  color: #000;
-  transition: background-color 0.3s ease; /* Transição suave */
+  color: #FFF; /* Cor do botão em modo noturno */
 }
 
 .album-header button:hover {
   background-color: #0056b3; /* Cor do botão ao passar o mouse */
 }
+
+/* Estilos específicos para telas menores */
+@media (max-width: 768px) {
+  .album-section {
+    padding: 15px; /* Reduz o padding interno */
+  }
+
+  .album-header h2 {
+    font-size: 15px; /* Reduz o tamanho da fonte do cabeçalho */
+  }
+
+  .album-header button {
+    padding: 8px 15px; /* Ajusta o padding do botão */
+    font-size: 14px; /* Reduz o tamanho da fonte do botão */
+  }
+}
+
 
 
 
@@ -543,6 +557,15 @@ body.dark-mode .album-header button {
   font-size: 18px;
   color: #333;
 }
+
+/* Estilos específicos para telas menores */
+@media (max-width: 768px) {
+  .slide-item {
+    width: 100%; /* Cada slide ocupa 100% da largura */
+    margin-right: 0; /* Remove a margem entre os slides */
+  }
+}
+
 
 /*Botão noturno ativado h2, funcionar*/
 body.dark-mode .slide-item h2{

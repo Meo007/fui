@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Falar com Suporte</title>
+    <link rel="shortcut icon" href="../img/logo/icon/logobranca.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Miltonian+Tattoo&display=swap" rel="stylesheet">
+    <style>
+        .miltonian-tattoo-regular {
+            font-family: "Miltonian Tattoo", serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(-45deg, #11114e, #0303b5, #fff);
+            background-size: 300% 300%;
+            animation: gradientAnimation 10s ease infinite;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+        }
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        .welcome-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            color: white;
+            font-size: 60px;
+        }
+        .active {
+            display: flex;
+            opacity: 1;
+            transform: translateY(0);
+        }
+        button {
+            padding: 10px 15px;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #007BFF;
+            border: 2px solid #007BFF;
+            border-radius: 100px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: rgba(0, 123, 255, 0.2);
+            transform: scale(1.05);
+        }
+        .container {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            max-width: 400px; /* Limite a largura do container */
+            width: 90%; /* Para dispositivos menores */
+            position: absolute; /* Para centralização */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* Para centralizar no meio da tela */
+        }
+        input, textarea {
+            margin: 10px 0;
+            padding: 10px;
+            width: 100%; /* Torna o campo responsivo */
+            max-width: 300px; /* Limite máximo da largura dos campos */
+            border: 2px solid #007BFF;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            border-color: #0056b3;
+            outline: none;
+        }
+        .alert {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            background: #f0f8ff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 100px;
+                color: #fff; /* Ajusta o tamanho da fonte para telas menores */
+            }
+        
+        }
+
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 40px; /* Ajusta ainda mais o tamanho da fonte para dispositivos móveis */
+            }
+            button {
+                font-size: 14px; /* Ajusta o tamanho do botão para dispositivos móveis */
+            }
+        }
+
+        h3{
+            color: #fff;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
+<body>
+    <h3>Retonrnar a página inicial <a href="../index.html">Clique aqui</a></h3>
+
+    <div class="welcome-message active" id="welcomeMessage">
+        <h2>Que bom te ver aqui!</h2>
+        <button class="arrow-button" id="continueButton">➡️</button>
+    </div>
+
+    <div class="container" id="nameContainer">
+        <h2>Qual é o seu Nome?</h2>
+        <input type="text" id="name" required>
+        <button onclick="nextStep('email', 'nameContainer')">Próximo</button>
+    </div>
+
+    <div class="container" id="emailContainer">
+        <h2>Qual é o seu E-mail?</h2>
+        <input type="email" id="email" required>
+        <button onclick="nextStep('question', 'emailContainer')">Próximo</button>
+    </div>
+
+    <div class="container" id="questionContainer">
+        <h2>Qual é a sua dúvida?</h2>
+        <textarea id="question" required></textarea>
+        <button onclick="sendEmail()">Enviar</button>
+    </div>
+
+    <div class="alert" id="alert">
+        <p>Agradecemos! Você será direcionado para o aplicativo de e-mail de sua preferência</p>
+        <p>Redirecionando em <span id="countdown">3</span> segundos...</p>
+    </div>
+
+    <script>
+        const welcomeMessage = document.getElementById('welcomeMessage');
+        const continueButton = document.getElementById('continueButton');
+        const nameContainer = document.getElementById('nameContainer');
+        const emailContainer = document.getElementById('emailContainer');
+        const questionContainer = document.getElementById('questionContainer');
+        const alertDiv = document.getElementById('alert');
+
+        continueButton.addEventListener('click', () => {
+            welcomeMessage.classList.remove('active');
+            setTimeout(() => {
+                nameContainer.style.display = 'flex';
+                nameContainer.classList.add('active');
+            }, 300);
+        });
+
+
+        function nextStep(next, currentContainer) {
+            const current = document.getElementById(currentContainer);
+            current.classList.remove('active');
+            current.style.display = 'none'; // Esconder a caixa atual
+
+            if (next === 'email') {
+                emailContainer.style.display = 'flex';
+                setTimeout(() => {
+                    emailContainer.classList.add('active');
+                }, 300); // Atraso para suavizar a transição
+            } else if (next === 'question') {
+                questionContainer.style.display = 'flex';
+                setTimeout(() => {
+                    questionContainer.classList.add('active');
+                }, 300);
+            }
+        }
+
+        function sendEmail() {
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const question = document.getElementById('question').value;
+
+            const subject = encodeURIComponent('Suporte: ' + name);
+            const body = encodeURIComponent(`Nome: ${name}\nE-mail: ${email}\nDúvida: ${question}`);
+            const mailtoLink = `mailto:blog.fui.viagens@gmail.com?subject=${subject}&body=${body}`;
+
+            alertDiv.style.display = 'flex';
+            startCountdown(3);
+
+            setTimeout(() => {
+                window.location.href = mailtoLink;
+            }, 3000);
+        }
+
+        function startCountdown(seconds) {
+            const countdownElement = document.getElementById('countdown');
+            let counter = seconds;
+
+            const interval = setInterval(() => {
+                countdownElement.textContent = counter;
+                counter--;
+
+                if (counter < 0) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato</title>
+    <link rel="stylesheet" href="contato.css">
+    <link rel="shortcut icon" href="../img/logo/icon/logobranca.ico" type="image/x-icon">
+</head>
+<body>
+    <!--Início cima-->
+    <!--Isolar toda a parte do "menu"-->
+    <div class="cima">
+        <!--logo com o nome-->
+        <header>
+            <div class="logo-container">
+                <img src="../img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                <h1 style="font-family: 'Montserrat', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); margin-bottom: 15px;">Fui! Viagens</h1>
+            </div>
+            <div class="icon-container">
+                <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
+            </div>
+        </header>
+
+        <!--pesquisa-->
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14c-2.48 0-4.5-2.02-4.5-4.5S7.02 5 9.5 5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/>
+            </svg>
+            <input type="text" placeholder="Pesquisar..." id="searchInput">
+            <div class="suggestions" id="suggestions"></div>
+        </div>
+        
+        <!--opções-->
+        <div class="nav-bar">
+            <a href="../index.html" onclick="redirecionar(event, 'Tela Inicial')">Tela Inicial</a>
+            <a href="../destino/destino.html" onclick="redirecionar(event, 'Destinos')">Destinos</a>
+            <a href="../hospedagens/hospedagens.html" onclick="redirecionar(event, 'Hospedagens')">Hospedagens</a>
+            <a href="../sobre-nos/sobre-nos.html" onclick="redirecionar(event, 'Sobre nós')">Sobre nós</a>
+            <a href="../contato/contato.html" class="active" onclick="funcao1()">Contato</a>
+            <a>    <button onclick="toggleDarkMode()">
+                <svg width="30" height="30" id="light-icon">
+                  <circle cx="15" cy="15" r="6" fill="currentColor" />
+          
+                  <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                  ></line>                          
+                  <use href="#ray" transform="rotate(45 15 15)" />
+                  <use href="#ray" transform="rotate(90 15 15)" />
+                  <use href="#ray" transform="rotate(135 15 15)" />
+                  <use href="#ray" transform="rotate(180 15 15)" />
+                  <use href="#ray" transform="rotate(225 15 15)" />
+                  <use href="#ray" transform="rotate(270 15 15)" />
+                  <use href="#ray" transform="rotate(315 15 15)" />
+                </svg>
+                <svg width="30" height="30" id="dark-icon">
+                  <path
+                    fill="currentColor"
+                    d="
+                    M 23, 5
+                    A 12 12 0 1 0 23, 25
+                    A 12 12 0 0 1 23, 5"
+                  />
+                </svg>
+              </button></a>
+    </div>
+    
+     <!--recados-->
+     <div class="no-results-message" id="noResultsMessage">Não foi possível encontrar resultado para a pesquisa, mas que tal conhecer mais um pouco do blog? <a href="destino/destino.html" style="color: white;">Clique aqui</a></div>
+     <div class="transition-message" id="transitionMessage">Você está sendo direcionado para a página...</div>
+    
+</div>
+<!--Fim da parte de cime-->
+
+
+<div class="h1"><h1>Entre em Contato</h1></div>
+
+<main>
+    <section class="contact-info">
+        <h2>Informações de Contato</h2>
+        <p><strong>Telefone:</strong> (11) 1234-5678</p>
+        <p><strong>Email:</strong> contato@exemplo.com</p>
+        <p><strong>Endereço:</strong> Rua Exemplo, 123 - São Paulo, SP</p>
+    </section>
+    
+    <section class="contact-form">
+        <h2 id="h2-suport">Envie uma Mensagem</h2>
+        <a  href="teste.html"><button id="supportButton">Falar com Suporte</button></a>
+    </section>
+        
+<main>
+    
+          <!--Inicio parte de baixo-->
+          <footer>
+            <div class="footer-logo-container">
+                <img src="../img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                <h2>Fui! Viagens</h2>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Tela Inicial</a>
+                <a href="../destino/destino.html">Destinos</a>
+                <a href="../hospedagens/hospedagens.html">Hospedagens</a>
+                <a href="../sobre-nos/sobre-nos.html">Sobre nós</a>
+                <a href="../contato/contato.html">Contato</a>
+            </div>
+            <div class="footer-rights">
+                <p>&copy; 2024 Fui! Viagens. Todos os direitos reservados.</p>
+            </div>
+        </footer>
+        <!--Fim parte de baixo-->
+
+<script src="contato.js"></script>
+</body>
+</html>

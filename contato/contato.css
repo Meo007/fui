@@ -1,0 +1,430 @@
+        /*Design base início*/
+        body {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%; /* Garante que o corpo ocupe 100% da largura */
+        }
+        header {
+            width: 100%; /* Garante que o cabeçalho ocupe 100% da largura */
+            color: #ffffff;
+            text-align: center; /* Centraliza o texto */
+            padding: 10px 20px; /* Reduz o padding para melhor visualização em telas menores */
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Distribui espaço entre os itens */
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Centraliza a logo */
+            flex: 1;
+        }
+
+        .logo-container img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .icon-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Alinha o ícone à direita */
+            flex: 0; /* Ajusta o ícone para ocupar o espaço necessário */
+        }
+
+        .icon-container img {
+            width: 45px;
+            height: 45px;
+        }
+
+        .search-bar {
+            width: 70%;
+            padding: 5px 10px;
+            display: flex;
+            align-items: center;
+            background-color: #fff;
+            color: #000;
+            border-radius: 20px;
+            margin: 10px 0; /* Reduz a margem para melhor visualização em telas menores */
+            position: relative;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
+
+        .search-bar input {
+            width: 100%;
+            background: none;
+            border: none;
+            color: #000;
+            padding: 5px;
+            outline: none;
+            font-size: 16px;
+        }
+
+        /*Escrita do pesquisar*/
+        .search-bar input::placeholder {
+            color: #0303b5;
+        }
+
+        /*ícone de pesquisa*/
+        .search-bar svg {
+            fill: #0303b5;
+            margin-right: 10px;
+        }
+
+        /*sugestões*/
+        .suggestions {
+            width: 100%; /* Garante que as sugestões ocupem 100% da largura */
+            background-color: #fff;
+            color: #0303b5;
+            border-radius: 0 0 10px 10px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            display: none;
+            flex-direction: column;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
+
+        /*texto de sugestões*/
+        .suggestions p {
+            padding: 10px;
+            margin: 0;
+            border-bottom: 1px solid #444;
+            cursor: pointer;
+        }
+
+        .suggestions p:last-child {
+            border-bottom: none;
+        }
+
+        .suggestions p:hover {
+            background-color: #0303b5;
+            color: #fff;
+        }
+
+        /* Barra de navegação */
+        .nav-bar {
+            width: 100%; /* Garante que a barra de navegação ocupe 100% da largura */
+            padding: 10px 20px;
+            display: flex;
+            justify-content: center;
+            box-sizing: border-box; /* Inclui padding na largura total */
+            z-index: 1000; /* Z-index alto para garantir que fique acima de outros elementos */
+            transition: top 0.3s ease; /* Transição suave para a mudança de posição */
+        }
+
+        .nav-bar.fixed {
+            background-color: #000050;
+            position: fixed;
+            top: 0;
+            z-index: 1000; /* Certifique-se de que a nav-bar fique acima de outros elementos */
+        }
+
+        /* Adiciona espaço ao conteúdo quando a nav-bar está fixa */
+        body.nav-fixed {
+            padding-top: 60px;
+        }
+
+        /* Links da barra de navegação */
+        .nav-bar a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px; /* Reduz a margem para melhor visualização em telas menores */
+            font-size: 16px;
+            position: relative;
+            padding: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        /* Efeito ativo */
+        .nav-bar a.active {
+            color: #fff;
+        }
+
+        /* Efeito para ativar */
+        .nav-bar a.active::after {
+            content: '';
+            display: block;
+            margin: 0 auto;
+            width: 50%;
+            padding-top: 5px;
+            border-bottom: 2px solid #fff;
+        }
+
+        /* Efeito de hover */
+        .nav-bar a:hover {
+            color: #fefefe;
+            background-color: #38B6FF; /* Cor do fundo ao final do efeito */
+            border-radius: 5px;
+        }
+
+        /*Ícone*/
+        .hamburger-menu {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff; /* Cor do ícone do menu hamburguer */
+        }
+
+        /*Responsividade*/  
+        @media (max-width: 768px) {
+            .nav-bar {
+                display: none; /* Oculta a nav-bar por padrão em telas pequenas */
+                flex-direction: column;
+                align-items: center;
+                width: 100%;
+                background-color: #0303b5;
+                position: absolute; /* Torna a nav-bar absoluta */
+                top: 60px; /* Posiciona abaixo do cabeçalho */
+                left: 0;
+            }
+
+            .nav-bar a {
+                margin: 10px 0;
+                font-size: 18px;
+            }
+
+            .hamburger-menu {
+                display: block; /* Exibe o menu hamburguer em telas pequenas */
+            }
+
+            .nav-bar.active {
+                display: flex; /* Exibe a nav-bar quando ativa */
+            }
+        }
+
+        /*Aviso de redirecionamento de página*/
+        .active {
+            font-weight: bold;
+            color: #333; /*Cor do link ativo*/
+        }
+
+        /*Aviso de redirecionamento da página*/
+        .transition-message {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .no-results-message {
+            width: 100%; /* Garante que a mensagem ocupe 100% da largura */
+            background-color: #0303b5;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            border-radius: 10px;
+            display: none;
+            margin-top: 10px;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
+
+          /*Botão de acessibilidade aumentar letra*/
+  
+        .accessibility-buttons {
+            display: flex;
+            align-items: center;
+        }
+
+        .accessibility-buttons button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /*fundo da parte de cima do site*/
+        .cima {
+            width: 100%; /* Garante que a div cima ocupe 100% da largura */
+            background-color: #000050;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box; /* Inclui padding na largura total */
+        }
+
+        /* Estilos para o modo noturno */
+        body.dark-mode {
+            background-color: #000; /* Fundo escuro para o modo noturno */
+        }
+
+        .overlay.dark-mode {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo translúcido para modo noturno */
+        }
+
+        .overlay-content.dark-mode {
+            background-color: #666; /* Fundo mais escuro para conteúdo no modo noturno */
+            color: #fff; /* Cor do texto para modo noturno */
+        }
+
+        .close-btn.dark-mode {
+            color: #fff; /* Cor do ícone de fechar para modo noturno */
+        }
+
+        /* Estilos do rodapé */
+footer {
+  width: 94%;
+  background-color: #000050;
+  color: white; /* Define a cor do link como branca */
+  text-decoration: none; /* Remove o sublinhado*/
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.footer-logo-container img {
+  max-height: 40px;
+  margin-bottom: 10px;
+}
+
+.footer-logo-container h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.footer-nav a {
+  color: #fff; /* Mantém a cor dos links como branca */
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+.footer-nav a:hover {
+  color: #f0f0f0; /* Muda a cor ao passar o mouse */
+}
+
+.footer-text {
+  font-size: 14px;
+}
+
+        /* Estilo do botão de voltar ao topo */
+        .back-to-top {
+            display: none; /* Oculta por padrão */
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #000050;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1000; /* Coloca o botão acima de outros elementos */
+        }
+
+        .back-to-top:hover {
+            background-color: #333; /* Muda a cor ao passar o mouse */
+        }
+        /*Design base fim*/
+
+
+.h1{
+  text-align: center;
+  color: #0303b5;
+ }
+ 
+ body.dark-mode .h1{
+   color:#ffff00;
+ }
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 2rem;
+}
+
+.contact-info, .contact-form {
+    background-color: white;
+    color: #000;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 1rem;
+    padding: 2rem;
+    width: 100%;
+    max-width: 400px;
+}
+
+body.dark-mode .contact-info, .contact-form{
+  background-color: #333;
+  color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: opacity 0.3s ease; /* Transição suave */
+}
+
+.active {
+  display: flex;
+  opacity: 1; /* Para efeito de fade-in */
+}
+
+input, textarea {
+  margin: 10px 0;
+  padding: 10px;
+  width: 300px;
+  border: 2px solid #007BFF;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+input:focus, textarea:focus {
+  border-color: #0056b3;
+  outline: none;
+}
+
+button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

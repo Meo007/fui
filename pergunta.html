@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faça sua escolha</title>
+    <link rel="shortcut icon" href="img/logo/logobranca.png" type="image/x-icon">
+    <style>
+        /* Resetando margens e padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Definindo o corpo da página */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1E90FF, #FFFFFF);
+            color: #333;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Container principal da página */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            flex-direction: column;
+        }
+
+        /* Logo com efeito de transição */
+        .logo {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+            z-index: 10;
+        }
+
+        /* Container da pergunta */
+        .question-container {
+            text-align: center;
+            max-width: 400px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 5;
+        }
+
+        /* Estilo do título */
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1E90FF;
+        }
+
+        /* Estilo da descrição */
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        /* Estilo dos botões personalizados */
+        .custom-btn {
+            background-color: #1E90FF;
+            color: white;
+            font-size: 1.2rem;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 10px;
+            width: 100%;
+        }
+
+        .custom-btn:hover {
+            background-color: #187bcd;
+            transform: translateY(-5px);
+        }
+
+        .custom-btn:focus {
+            outline: none;
+        }
+
+        /* Botão de voltar */
+        #back-btn {
+            background-color: #FF6347;
+            font-size: 1.2rem;
+            padding: 12px 25px;
+            color: white;
+            border-radius: 5px;
+            width: auto;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        #back-btn:hover {
+            background-color: #e5533e;
+            transform: translateY(-2px);
+        }
+
+        /* Media query para telas menores */
+        @media (max-width: 768px) {
+            .question-container {
+                padding: 30px;
+            }
+            h1 {
+                font-size: 1.8rem;
+            }
+            p {
+                font-size: 1rem;
+            }
+            .custom-btn {
+                font-size: 1rem;
+            }
+        }
+
+        /* Para telas muito pequenas */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.5rem;
+            }
+            .custom-btn {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <!-- Aqui você pode colocar a imagem da logo -->
+        <img src="#" alt="" width="150"> <!-- Substitua "logo.png" pela URL ou caminho correto -->
+    </div>
+    
+    <div class="container">
+        <div class="question-container">
+            <h1>Onde você prefere ir?</h1>
+            <p>Escolha entre Destinos ou Hospedagens.</p>
+            <div class="button-container">
+                <button id="destino-btn" class="custom-btn">Destino</button>
+                <button id="hospedagem-btn" class="custom-btn">Hospedagem</button>
+            </div>
+            <button id="back-btn" class="custom-btn">Voltar</button>
+        </div>
+    </div>
+
+    <script>
+        // Selecionando os botões
+        const destinoBtn = document.getElementById('destino-btn');
+        const hospedagemBtn = document.getElementById('hospedagem-btn');
+        const backBtn = document.getElementById('back-btn');
+        const logo = document.querySelector('.logo');
+
+        // Função para redirecionar para a página de destinos
+        destinoBtn.addEventListener('click', () => {
+            // Iniciar o efeito de transição da logo (desaparecer)
+            logo.style.opacity = '0';
+            // Redirecionar após 1 segundo (tempo da animação)
+            setTimeout(() => {
+                window.location.href = 'destino/destino.html'; // Aqui você pode mudar para a URL de destinos
+            }, 1000);
+        });
+
+        // Função para redirecionar para a página de hospedagens
+        hospedagemBtn.addEventListener('click', () => {
+            // Iniciar o efeito de transição da logo (desaparecer)
+            logo.style.opacity = '0';
+            // Redirecionar após 1 segundo (tempo da animação)
+            setTimeout(() => {
+                window.location.href = 'hospedagem/hospedagem.html'; // Aqui você pode mudar para a URL de hospedagens
+            }, 1000);
+        });
+
+        // Função para voltar à página anterior
+        backBtn.addEventListener('click', () => {
+            window.history.back(); // Volta para a página anterior no histórico do navegador
+        });
+    </script>
+</body>
+</html>

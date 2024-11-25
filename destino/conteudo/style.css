@@ -1,0 +1,865 @@
+        /*Design base início*/
+        body {
+          font-family: Arial, sans-serif;
+          font-weight: bold;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          width: 100%; /* Garante que o corpo ocupe 100% da largura */
+          background-color: #f5f5f5;
+      }
+
+      header {
+          width: 100%; /* Garante que o cabeçalho ocupe 100% da largura */
+          color: #ffffff;
+          text-align: center; /* Centraliza o texto */
+          padding: 10px 20px; /* Reduz o padding para melhor visualização em telas menores */
+          display: flex;
+          align-items: center;
+          justify-content: space-between; /* Distribui espaço entre os itens */
+          box-sizing: border-box; /* Inclui padding na largura total */
+      }
+
+      .logo-container {
+          display: flex;
+          align-items: center;
+          justify-content: center; /* Centraliza a logo */
+          flex: 1;
+      }
+
+      .logo-container img {
+          max-height: 40px;
+          margin-right: 10px;
+      }
+
+      .icon-container {
+          display: flex;
+          align-items: center;
+          justify-content: flex-end; /* Alinha o ícone à direita */
+          flex: 0; /* Ajusta o ícone para ocupar o espaço necessário */
+      }
+
+      .icon-container img {
+          width: 45px;
+          height: 45px;
+      }
+
+      .search-bar {
+          width: 70%;
+          padding: 5px 10px;
+          display: flex;
+          align-items: center;
+          background-color: #fff;
+          color: #000;
+          border-radius: 20px;
+          margin: 10px 0; /* Reduz a margem para melhor visualização em telas menores */
+          position: relative;
+          box-sizing: border-box; /* Inclui padding na largura total */
+      }
+
+      .search-bar input {
+          width: 100%;
+          background: none;
+          border: none;
+          color: #000;
+          padding: 5px;
+          outline: none;
+          font-size: 16px;
+      }
+
+      /*Escrita do pesquisar*/
+      .search-bar input::placeholder {
+          color: #0303b5;
+      }
+
+      /*ícone de pesquisa*/
+      .search-bar svg {
+          fill: #0303b5;
+          margin-right: 10px;
+      }
+
+      /*sugestões*/
+      .suggestions {
+          width: 100%; /* Garante que as sugestões ocupem 100% da largura */
+          background-color: #fff;
+          color: #0303b5;
+          border-radius: 0 0 10px 10px;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          display: none;
+          flex-direction: column;
+          max-height: 200px;
+          overflow-y: auto;
+          z-index: 1;
+          box-sizing: border-box; /* Inclui padding na largura total */
+      }
+
+      /*texto de sugestões*/
+      .suggestions p {
+          padding: 10px;
+          margin: 0;
+          border-bottom: 1px solid #444;
+          cursor: pointer;
+      }
+
+      .suggestions p:last-child {
+          border-bottom: none;
+      }
+
+      .suggestions p:hover {
+          background-color: #0303b5;
+          color: #fff;
+      }
+
+      /* Barra de navegação */
+      .nav-bar {
+          width: 100%; /* Garante que a barra de navegação ocupe 100% da largura */
+          padding: 10px 20px;
+          display: flex;
+          justify-content: center;
+          box-sizing: border-box; /* Inclui padding na largura total */
+          z-index: 1000; /* Z-index alto para garantir que fique acima de outros elementos */
+          transition: top 0.3s ease; /* Transição suave para a mudança de posição */
+      }
+
+      .nav-bar.fixed {
+          background-color: #000050;
+          position: fixed;
+          top: 0;
+          z-index: 1000; /* Certifique-se de que a nav-bar fique acima de outros elementos */
+      }
+
+      /* Adiciona espaço ao conteúdo quando a nav-bar está fixa */
+      body.nav-fixed {
+          padding-top: 60px;
+      }
+
+      /* Links da barra de navegação */
+      .nav-bar a {
+          color: #fff;
+          text-decoration: none;
+          margin: 0 10px; /* Reduz a margem para melhor visualização em telas menores */
+          font-size: 16px;
+          position: relative;
+          padding: 5px;
+          transition: background-color 0.3s ease;
+      }
+
+      /* Efeito ativo */
+      .nav-bar a.active {
+          color: #fff;
+      }
+
+      /* Efeito para ativar */
+      .nav-bar a.active::after {
+          content: '';
+          display: block;
+          margin: 0 auto;
+          width: 50%;
+          padding-top: 5px;
+          border-bottom: 2px solid #fff;
+      }
+
+      /* Efeito de hover */
+      .nav-bar a:hover {
+          color: #fefefe;
+          background-color: #38B6FF; /* Cor do fundo ao final do efeito */
+          border-radius: 5px;
+      }
+
+      /*Ícone*/
+      .hamburger-menu {
+          display: none;
+          font-size: 30px;
+          cursor: pointer;
+          color: #fff; /* Cor do ícone do menu hamburguer */
+      }
+
+      /*Responsividade*/  
+      @media (max-width: 768px) {
+          .nav-bar {
+              display: none; /* Oculta a nav-bar por padrão em telas pequenas */
+              flex-direction: column;
+              align-items: center;
+              width: 100%;
+              background-color: #0303b5;
+              position: absolute; /* Torna a nav-bar absoluta */
+              top: 60px; /* Posiciona abaixo do cabeçalho */
+              left: 0;
+          }
+
+          .nav-bar a {
+              margin: 10px 0;
+              font-size: 18px;
+          }
+
+          .hamburger-menu {
+              display: block; /* Exibe o menu hamburguer em telas pequenas */
+          }
+
+          .nav-bar.active {
+              display: flex; /* Exibe a nav-bar quando ativa */
+          }
+      }
+
+      /*Aviso de redirecionamento de página*/
+      .active {
+          font-weight: bold;
+          color: #333; /*Cor do link ativo*/
+      }
+
+      /*Aviso de redirecionamento da página*/
+      .transition-message {
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background-color: rgba(0, 0, 0, 0.8);
+          color: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          display: none;
+          z-index: 1000;
+          text-align: center;
+      }
+
+      .no-results-message {
+          width: 100%; /* Garante que a mensagem ocupe 100% da largura */
+          background-color: #0303b5;
+          color: #fff;
+          text-align: center;
+          padding: 10px;
+          border-radius: 10px;
+          display: none;
+          margin-top: 10px;
+          box-sizing: border-box; /* Inclui padding na largura total */
+      }
+
+        /*Botão de acessibilidade aumentar letra*/
+
+      .accessibility-buttons {
+          display: flex;
+          align-items: center;
+      }
+
+      .accessibility-buttons button {
+          margin-left: 10px;
+          padding: 5px 10px;
+          font-size: 16px;
+          cursor: pointer;
+      }
+
+      /*fundo da parte de cima do site*/
+      .cima {
+          width: 100%; /* Garante que a div cima ocupe 100% da largura */
+          background-color: #000050;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          box-sizing: border-box; /* Inclui padding na largura total */
+      }
+
+      /* Estilos para o modo noturno */
+      body.dark-mode {
+          background-color: #000; /* Fundo escuro para o modo noturno */
+      }
+
+      .overlay.dark-mode {
+          background-color: rgba(0, 0, 0, 0.7); /* Fundo translúcido para modo noturno */
+      }
+
+      .overlay-content.dark-mode {
+          background-color: #666; /* Fundo mais escuro para conteúdo no modo noturno */
+          color: #fff; /* Cor do texto para modo noturno */
+      }
+
+      .close-btn.dark-mode {
+          color: #fff; /* Cor do ícone de fechar para modo noturno */
+      }
+
+      /* Estilos do rodapé */
+footer {
+width: 94%;
+background-color: #000050;
+color: white; /* Define a cor do link como branca */
+text-decoration: none; /* Remove o sublinhado*/
+padding: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.footer-logo-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin-bottom: 20px;
+}
+
+.footer-logo-container img {
+max-height: 40px;
+margin-bottom: 10px;
+}
+
+.footer-logo-container h1 {
+font-size: 24px;
+margin: 0;
+}
+
+.footer-nav {
+display: flex;
+justify-content: center;
+margin-bottom: 10px;
+}
+
+.footer-nav a {
+color: #fff; /* Mantém a cor dos links como branca */
+text-decoration: none;
+margin: 0 10px;
+}
+
+.footer-nav a:hover {
+color: #f0f0f0; /* Muda a cor ao passar o mouse */
+}
+
+.footer-text {
+font-size: 14px;
+}
+
+      /* Estilo do botão de voltar ao topo */
+      .back-to-top {
+          display: none; /* Oculta por padrão */
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background-color: #000050;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          padding: 10px 15px;
+          cursor: pointer;
+          z-index: 1000; /* Coloca o botão acima de outros elementos */
+      }
+
+      .back-to-top:hover {
+          background-color: #333; /* Muda a cor ao passar o mouse */
+      }
+      /*Design base fim*/
+
+  /*Inicio design da página base do destino*/
+/* Container principal */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin: 20px auto;
+  max-width: 100%; /* Permite o container ocupar a largura total da tela */
+  flex-wrap: wrap; /* Permite que o conteúdo se organize em várias linhas */
+}
+
+/* Galeria de imagens */
+.gallery {
+  max-width: 100%; /* Galeria ocupará 100% do espaço disponível */
+  margin: 0 20px; /* Margem lateral */
+  text-align: center;
+}
+
+.gallery img {
+  width: 900px; /* Remove largura fixa */
+  max-width: 60%; /* Mantém imagens responsivas dentro do container */
+  height: auto; /* Remove altura fixa */
+  border-radius: 10px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  border: 5px solid #fff;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.gallery img:hover {
+  transform: scale(1.05); /* Efeito de zoom ao passar o mouse */
+}
+
+/* Botão de "Mostrar mais" */
+#showImages {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#showImages:hover {
+  background-color: #0056b3;
+}
+
+#showImages svg {
+  margin-right: 8px;
+}
+
+/* Slideshow */
+#slideshow-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none; /* Inicialmente escondido */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 1000;
+}
+
+#slideshow {
+  position: relative;
+  max-width: 90%;
+  max-height: 80%; /* Ajustado para deixar espaço para setas e legendas */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slide {
+  display: none;
+  width: 600px; /* Largura fixa */
+  height: 400px; /* Altura fixa */
+  object-fit: cover; /* Mantém a proporção da imagem */
+  margin-bottom: 10px; /* Espaçamento entre a imagem e a legenda */
+}
+
+.show {
+  display: block;
+}
+
+.caption {
+  color: white;
+  text-align: center;
+  margin: 5px 0 10px 0; /* Espaçamento entre a legenda e as setas */
+  font-size: 1.2rem;
+}
+
+.arrow {
+  position: absolute;
+  bottom: 20px; /* Mover setas para baixo */
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.arrow.left {
+  left: 10px;
+}
+
+.arrow.right {
+  right: 10px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+#button{
+  background-color: #000050;
+  color: #fff;
+
+}
+/* Estilos para a moldura de imagens */
+.moldura {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Define 2 colunas */
+    gap: 10px; /* Espaçamento entre os elementos */
+    padding: 20px; /* Espaçamento interno da moldura */
+    border: 5px solid #fff; /* Borda ao redor da moldura */
+    background-color: #fff;
+    max-width: 350px; /* Limita a largura da moldura */
+}
+
+.imagem {
+    border: 2px solid #333; /* Borda ao redor de cada imagem */
+    padding: 10px; /* Espaçamento interno ao redor da imagem */
+    background-color: #fff; /* Fundo ao redor da imagem */
+    overflow: hidden; /* Garante que a imagem não transborde do container */
+    transition: transform 0.3s ease;
+}
+
+.imagem:hover {
+    transform: scale(1.05);
+}
+
+.imagem img {
+    display: block;
+    width: 100%; /* Garante que a imagem preencha todo o espaço disponível */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.imagem:hover {
+    transform: translateY(-10px); /* Efeito de hover: imagem sobe */
+}
+
+/* Estilos para as novas seções */
+/* Estilos para as novas seções */
+.value-section, .info-section {
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 70%;
+}
+
+.value-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.value-section .value {
+  font-weight: bold; /* Remove a definição de tamanho de fonte fixa */
+}
+
+.value-section .btn {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.value-section .btn:hover {
+  background-color: #0056b3;
+}
+
+.info-section {
+  margin-top: 20px;
+}
+
+.info-section h2 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.info-section p {
+  line-height: 1.6; /* Remove a definição de tamanho de fonte fixa */
+  text-align: justify;
+}
+
+body.dark-mode .info-section {
+  background-color: #333;
+  color: #fff;
+}
+
+body.dark-mode .value-section {
+  background-color: #333;
+  color: #fff;
+}
+
+/*Fim do design da página BASE*/
+
+/*Inicio do design de avaliação*/
+.container-avaliation {
+  max-width: 1000px;
+  margin: auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+}
+
+.reviews-summary {
+  margin-bottom: 20px;
+  font-size: 18px;
+  color: #333;
+}
+
+.reviews-container {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+/* Revisar a altura máxima para telas pequenas */
+@media (max-width: 600px) {
+  .reviews-container {
+      max-height: 200px; /* Diminui a altura máxima em telas pequenas */
+  }
+}
+
+.review-item {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  position: relative; /* Para posicionar o menu */
+}
+
+.review-item h4 {
+  color: #4A90E2;
+}
+
+.review-item p {
+  color: #666;
+}
+
+.btn {
+  background-color: #000050;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+  font-size: 18px;
+  border: none;
+}
+
+.btn:hover {
+  background-color: #357ABD;
+  transform: translateY(-2px);
+}
+
+.input-field {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.textarea {
+  height: 150px;
+  width: 95%;
+  resize: none;
+}
+
+.star-rating {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.star {
+  font-size: 40px;
+  color: #ddd;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.star.selected, .star.hovered {
+  color: #FFD700;
+}
+
+.review-stars {
+  display: flex;
+}
+
+.remove-btn {
+  background-color: #FF4C4C;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+/* Menu de três pontinhos */
+.more-options {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.options-menu {
+  display: none;
+  position: absolute;
+  top: 30px; /* Ajuste a posição do menu */
+  right: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 100px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.options-menu button {
+  background: none;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  background-color: red;
+  color: white;
+  border-radius: 100px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+  color: #999;
+}
+
+.close:hover {
+  color: #333;
+}
+
+.cancel-btn {
+  background-color: #FFB84D;
+  color: white;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 5px;
+  margin-left: 5px;
+}
+
+.password-modal {
+  display: none;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.password-modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.thankYouModal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.thankYouModal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Consultas de mídia para tornar o layout responsivo */
+@media (max-width: 900px) {
+  .container {
+      padding: 15px; /* Reduzir o preenchimento em telas menores */
+  }
+
+  h1 {
+      font-size: 24px; /* Reduzir o tamanho da fonte em telas menores */
+  }
+
+  .reviews-summary {
+      font-size: 16px; /* Ajustar o tamanho da fonte */
+  }
+
+  .btn {
+      padding: 10px 20px; /* Reduzir o preenchimento do botão */
+      font-size: 16px; /* Reduzir o tamanho da fonte do botão */
+  }
+
+  .input-field, .textarea {
+      width: 90%; /* Ajustar a largura dos campos de entrada */
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+      font-size: 20px; /* Tamanho de fonte ainda menor para dispositivos móveis */
+  }
+
+  .review-item {
+      padding: 8px; /* Reduzir o preenchimento dos itens de revisão */
+  }
+
+  .remove-btn, .cancel-btn {
+      padding: 4px 8px; /* Ajustar o preenchimento dos botões em telas menores */
+  }
+
+  .star {
+      font-size: 30px; /* Ajustar o tamanho das estrelas */
+  }
+}
+/*Fim do design de avaliação*/
+
+.title{
+  color: #000;
+}
+
+body.dark-mode .title{
+  color: #fff;
+}

@@ -131,15 +131,16 @@
             }
         }
 
-        h3{
-            color: #fff;
-            font-size: 12px;
+        .botao{
+            background-color: #FFF;
+            color: #000;
+            font-size: 20px;
         }
 
     </style>
 </head>
 <body>
-    <h3>Retonrnar a página inicial <a href="../index.html">Clique aqui</a></h3>
+    <h3 class="botao">Retornar a página inicial <a href="../index.html">Clique aqui</a></h3>
 
     <div class="welcome-message active" id="welcomeMessage">
         <h2>Que bom te ver aqui!</h2>
@@ -159,7 +160,7 @@
     </div>
 
     <div class="container" id="questionContainer">
-        <h2>Qual é a sua dúvida?</h2>
+        <h2>Nos deixe sua mensagem:</h2>
         <textarea id="question" required></textarea>
         <button onclick="sendEmail()">Enviar</button>
     </div>

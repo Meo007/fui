@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hospedagens - Bahia</title>
+    <link rel="stylesheet" href="../hospedagens/conteúdo/style.css">
+    <link rel="shortcut icon" href="../img/logo/icon/logobranca.ico" type="image/x-icon">
+</head>
+<body>
+    <!--Início cima-->
+    <!--Isolar toda a parte do "menu"-->
+    <div class="cima">
+        <!--logo com o nome-->
+        <header>
+            <div class="logo-container">
+                <img src="../img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                <h1 style="font-family: 'Montserrat', sans-serif; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); margin-bottom: 15px;">Fui! Viagens</h1>
+            </div>
+            <div class="icon-container">
+                <div class="hamburger-menu" onclick="toggleMenu()">&#9776;</div>
+            </div>
+        </header>
+
+        <!--pesquisa-->
+        <div class="search-bar">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14c-2.48 0-4.5-2.02-4.5-4.5S7.02 5 9.5 5s4.5 2.02 4.5 4.5-2.02 4.5-4.5 4.5z"/>
+            </svg>
+            <input type="text" placeholder="Pesquisar..." id="searchInput">
+            <div class="suggestions" id="suggestions"></div>
+        </div>
+        
+        <!--opções-->
+        <div class="nav-bar">
+            <a href="../index.html" onclick="redirecionar(event, 'Tela inicial')" >Tela Inicial</a>
+            <a href="../destino/destino.html" onclick="redirecionar(event, 'Destinos')">Destinos</a>
+            <a href="../hospedagens/hospedagens.html" class="active" onclick="funcao1()">Hospedagens</a>
+            <a href="../sobre-nos/sobre-nos.html" onclick="redirecionar(event, 'Sobre nós')">Sobre nós</a>
+            <a href="../contato/contato.html" onclick="redirecionar(event, 'Contato')">Contato</a>
+            <!--BOtão modo escuro-->
+            <a>    <button onclick="toggleDarkMode()">
+                <svg width="30" height="30" id="light-icon">
+                  <circle cx="15" cy="15" r="6" fill="currentColor" />
+          
+                  <line
+                    id="ray"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    x1="15"
+                    y1="1"
+                    x2="15"
+                    y2="4"
+                  ></line>                          
+                  <use href="#ray" transform="rotate(45 15 15)" />
+                  <use href="#ray" transform="rotate(90 15 15)" />
+                  <use href="#ray" transform="rotate(135 15 15)" />
+                  <use href="#ray" transform="rotate(180 15 15)" />
+                  <use href="#ray" transform="rotate(225 15 15)" />
+                  <use href="#ray" transform="rotate(270 15 15)" />
+                  <use href="#ray" transform="rotate(315 15 15)" />
+                </svg>
+                <svg width="30" height="30" id="dark-icon">
+                  <path
+                    fill="currentColor"
+                    d="
+                    M 23, 5
+                    A 12 12 0 1 0 23, 25
+                    A 12 12 0 0 1 23, 5"
+                  />
+                </svg>
+              </button></a>
+              <!--Botão de acessibilidade-->
+              <a >
+                <div class="accessibility-buttons">
+                <button id="decrease-font" aria-label="Diminuir Fonte">A-</button>
+                <button id="increase-font" aria-label="Aumentar Fonte">A+</button>
+            </div>
+        </a>
+    </div>
+    
+     <!--recados-->
+     <div class="no-results-message" id="noResultsMessage">Não foi possível encontrar resultado para a pesquisa, mas que tal conhecer mais um pouco do blog? <a href="destino/destino.html" style="color: white;">Clique aqui</a></div>
+     <div class="transition-message" id="transitionMessage">Você está sendo direcionado para a página...</div>
+    
+</div>
+<!--Fim da parte de cima-->
+
+    <div class="title">
+    <h2>Porto Seguro: Best Western Shalimar</h2>
+
+    </div>
+
+    <div class="container">
+        <!-- Galeria Principal -->
+        <div class="gallery">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/capa.jpg" alt="Hotel">
+            <button id="showImages">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                Mostrar mais imagens
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Div para Informações Sobre o Local -->
+    <div class="info-section">
+        <h2 style="text-decoration: underline;">Informações sobre o Local</h2>
+        <p>Localizado à beira-mar, a 6 km da Praia de Taperapuã, o Best Western Shalimar oferece piscina, sauna, academia e Wi-Fi gratuito. Os quartos possuem varanda com vista para o jardim, e o hotel conta com restaurante, bar e sala de jogos. A 5 minutos do aeroporto, o hotel é recomendado por casais, com nota 9,3 pela localização.
+        </p>
+    </div>
+
+    <!-- Div para Mostrar Valor e Botão -->
+    <div class="value-section">
+        <div class="value">Média de investimento para 7 dias: R$ 6.277,00</div>
+        <button class="btn" onclick="window.location.href='https://www.hoteis.com/Hotel-Search?HotelID=40890&adults=1&children=&destination=Best%20Western%20Shalimar%20Praia%20Hotel%2C%20Porto%20Seguro%2C%20Bahia%20%28estado%29%2C%20Brasil&endDate=2025-01-19&gad_source=1&gclid=CjwKCAiA3ZC6BhBaEiwAeqfvyqPQpWN3ShQApKcEgtdBFK9CY8DNf531ZHb6IXJEayHrtOI_wWJlMxoCvCQQAvD_BwE&latLong=-16.440285%2C-39.062653&locale=pt_BR&mapBounds=&regionId&selected=1753864&semcid=HCOM-BR.UB.GOOGLE.PT-c-PT.HOTEL&semdtl=a115301563750.b1132374406604.g1kwd-186729636.e1c.m1CjwKCAiA3ZC6BhBaEiwAeqfvyqPQpWN3ShQApKcEgtdBFK9CY8DNf531ZHb6IXJEayHrtOI_wWJlMxoCvCQQAvD_BwE.r15347ffd43b2aa0287f9cc8d4546cc126bbb6e7b8691ea97091e8b2cd214b738a.c1j9dAC3p0NXBYbkqblakrMw.j19197539.k1.d1569722375631.h1e.i1.l1.n1.o1.p1.q1.s1.t1.x1.f1.u1.v1.w1&siteid=301800003&sort=RECOMMENDED&startDate=2025-01-13&theme=&useRewards=false&userIntent=&pwaDialog='">Planejamento</button>
+    </div>
+
+    <div id="slideshow-container">
+        <div id="slideshow">
+            <span class="close" id="close">&#10006;</span>
+            <span class="arrow left" id="prev">&#10094;</span>
+            <span class="arrow right" id="next">&#10095;</span>
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (10).jpg" alt="Imagem 1" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (11).jpg" alt="Imagem 2" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (12).jpg" alt="Imagem 3" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (14).jpg" alt="Imagem 4" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (15).jpg" alt="Imagem 5" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (16).jpg" alt="Imagem 6" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (17).jpg" alt="Imagem 7" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (18).jpg" alt="Imagem 8" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (19).jpg" alt="Imagem 9" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (2).jpg" alt="Imagem 10" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (3).jpg" alt="Imagem 11" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (4).jpg" alt="Imagem 12" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (5).jpg" alt="Imagem 13" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (6).jpg" alt="Imagem 14" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (7).jpg" alt="Imagem 15" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (8).jpg" alt="Imagem 16" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel (9).jpg" alt="Imagem 17" class="slide">
+            <img src="../img/conteudo/nacional/hospedagem/hospedagem-porto-seguro/Best Western Shalimar Praia Hotel.jpg" alt="Imagem 18" class="slide">
+            <div class="caption" id="caption"></div>
+        </div>
+    </div>
+
+    <br>
+    <br>
+            <!--Avaliação-->
+            <div class="container-avaliation">
+                <h1>Avaliações de Usuários</h1>
+                
+                <div class="reviews-summary" id="reviewsSummary">
+                    <!-- Resumo das avaliações será carregado aqui -->
+                </div>
+        
+                <div class="reviews-container" id="reviewsContainer">
+                    <!-- Avaliações serão carregadas aqui -->
+                </div>
+        
+                <button id="openReviewModalBtn" class="btn">Escreva sua Resenha</button>
+        
+                <!-- Modal de Avaliação -->
+                <div id="reviewModal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Escreva sua Resenha</h3>
+                        
+                        <input type="text" id="nome" placeholder="Seu Nome" class="input-field">
+                        <input type="email" id="email" placeholder="Seu E-mail" class="input-field">
+        
+                        <h3>Nos avalie: </h3>
+                        <div class="star-rating" id="starRating">
+                            <span class="star" data-value="1">★</span>
+                            <span class="star" data-value="2">★</span>
+                            <span class="star" data-value="3">★</span>
+                            <span class="star" data-value="4">★</span>
+                            <span class="star" data-value="5">★</span>
+                        </div>
+                        
+                        <textarea id="reviewText" class="input-field textarea" placeholder="Escreva sua resenha aqui..."></textarea>
+                        
+                        <button id="saveReviewBtn" class="btn btn-primary">Salvar Resenha</button>
+                        <button id="cancelReviewBtn" class="cancel-btn">Cancelar</button>
+                    </div>
+                </div>
+        
+                <!-- Modal de Senha -->
+                <div id="passwordModal" class="password-modal">
+                    <div class="password-modal-content">
+                        <span class="close">&times;</span>
+                        <h3>Digite sua Senha para Remover a Resenha</h3>
+                        <input type="password" id="passwordInput" placeholder="Senha" class="input-field">
+                        <button id="confirmDeleteBtn" class="remove-btn">Confirmar</button>
+                        <button id="cancelPasswordBtn" class="cancel-btn">Cancelar</button>
+                    </div>
+                </div>
+        
+                <!-- Modal de Agradecimento -->
+                <div id="thankYouModal" class="thankYouModal">
+                    <div class="thankYouModal-content">
+                        <h3>Obrigado por avaliar!</h3>
+                        <button id="closeThankYouModal" class="btn">Fechar</button>
+                    </div>
+                </div>
+            </div>
+        
+            <br>
+            <br>
+            
+            <!--Inicio parte de baixo-->
+            <footer>
+                <div class="footer-logo-container">
+                    <img src="../img/logo/logobranca.png" alt="Logo da Agência de Viagens">
+                    <h2>Fui! Viagens</h2>
+                </div>
+                <div class="footer-links">
+                    <a href="../index.html">Tela Inicial</a>
+                    <a href="../destino/destino.html">Destinos</a>
+                    <a href="../hospedagens/hospedagens.html">Hospedagens</a>
+                    <a href="../sobre-nos/sobre-nos.html">Sobre nós</a>
+                    <a href="../contato/contato.html">Contato</a>
+                </div>
+                <div class="footer-rights">
+                    <p>&copy; 2024 Fui! Viagens. Todos os direitos reservados.</p>
+                </div>
+            </footer>
+            <!--Fim parte de baixo-->
+
+            
+    <script src="../hospedagens/conteúdo/bahia.js"></script>
+</body>
+</html>
